@@ -17,6 +17,7 @@ import { IoIosPlay } from "react-icons/io"
 import EachUtils from "@/utils/EachUtils"
 import { LIST_CONTENT } from "@/constans/listContent"
 import { LIST_DONASI } from "@/constans/listDonasi"
+import { LIST_BERITA } from "@/constans/listBerita"
 
 const fadeUp = {
     hidden: { opacity: 0, y: 24 },
@@ -30,6 +31,8 @@ const fadeStagger = {
         transition: { staggerChildren: 0.12 },
     },
 }
+
+const widthScreen = window.innerWidth
 
 const Landing = () => {
     const [scrolled, setScrolled] = useState(false)
@@ -68,9 +71,10 @@ const Landing = () => {
                         </div>
 
                         <div className="flex gap-4">
-                            <button className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md font-semibold text-[14px] transition-all">
+                            <button className={`${widthScreen < 413 ? 'hidden' : 'bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md font-semibold text-[14px] transition-all'}`}>
                                 0819 0505 6908
                             </button>
+                            {console.log(widthScreen)}
                             <button className="bg-white text-green-600 border border-green-500 hover:bg-green-500 hover:text-white py-2 px-4 rounded-md font-semibold text-[14px] transition-all">
                                 Bayar Zakat
                             </button>
@@ -79,14 +83,14 @@ const Landing = () => {
                 )}
 
                 {/* Navbar */}
-                <nav className="w-full pt-4.5">
-                    <div className="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-10 py-3">
+                <nav className="w-full">
+                    <div className="flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-3">
                         <img
                             src="/logo-web.png"
                             alt="Logo"
                             loading="lazy"
                             onClick={() => location.replace("/")}
-                            className="h-12 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
+                            className="h-11 sm:h-12 md:h-14 w-auto object-contain cursor-pointer hover:scale-105 transition-transform"
                         />
 
                         <div className="hidden md:flex gap-12 text-[15px] font-semibold">
@@ -97,6 +101,8 @@ const Landing = () => {
                                 { name: "Qurban", href: "#qurban" },
                                 { name: "Santunan Akbar", href: "#santunan" },
                                 { name: "Peduli Yatim", href: "#yatim" },
+                                { name: "Video", href: "#video" },
+                                { name: "Lokasi", href: "#map" },
                             ].map((item, i) => (
                                 <a
                                     key={i}
@@ -119,7 +125,7 @@ const Landing = () => {
                             </a>
 
                             <button
-                                className="md:hidden p-2 rounded-md bg-white shadow hover:bg-gray-100 transition-all text-black"
+                                className="md:hidden p-2 rounded-xl bg-white shadow hover:bg-gray-100 transition-all text-black"
                                 onClick={() => setMobileOpen((v) => !v)}
                             >
                                 {mobileOpen ? <FaTimes /> : <FaBars />}
@@ -127,6 +133,7 @@ const Landing = () => {
                         </div>
                     </div>
                 </nav>
+
 
                 {/* Mobile Menu */}
                 <div
@@ -419,26 +426,79 @@ const Landing = () => {
                 </section>
 
                 {/* BERITA */}
-                <section className="pt-14 pb-20">
+                {/* BERITA TERKINI */}
+                <section id="berita" className="pt-16 pb-20 bg-white">
                     <div className="max-w-7xl mx-auto px-6 md:px-10">
                         <motion.h3
                             initial="hidden"
                             whileInView="visible"
                             variants={fadeUp}
-                            className="text-3xl font-bold text-gray-800 mb-6 text-center"
+                            className="text-3xl font-black text-gray-800 text-center"
                         >
-                            Berita Terkini
+                            BERITA TERKINI
                         </motion.h3>
 
-                        <p className="text-center text-gray-500 max-w-2xl mx-auto">
-                            Update kegiatan yayasan dan program terbaru untuk membantu anak-anak yatim.
+                        <p className="text-center text-gray-500 mt-3 max-w-2xl mx-auto">
+                            Disini kumpulan berita yang bisa anda baca mengenai Layanan Kami
                         </p>
 
-                        <div className="mt-10 text-center text-gray-400 italic">
-                            (Coming Soon)
+                        {/* GRID BERITA */}
+                        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {LIST_BERITA.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    whileHover={{ y: -8 }}
+                                    className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden border border-gray-100 flex flex-col"
+                                >
+                                    {/* IMAGE */}
+                                    <div className="relative w-full h-[190px] overflow-hidden">
+                                        <img
+                                            src={item.img}
+                                            alt={item.title}
+                                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                        />
+
+                                        {/* CATEGORY BADGE */}
+                                        <span className="absolute top-3 right-3 bg-green-600 text-white text-[11px] font-bold px-3 py-1 rounded-full shadow">
+                                            {item.category}
+                                        </span>
+                                    </div>
+
+                                    {/* CONTENT */}
+                                    <div className="p-5 flex flex-col flex-1">
+                                        <h3 className="font-black text-gray-800 text-[15px] leading-snug uppercase line-clamp-3">
+                                            {item.title}
+                                        </h3>
+
+                                        <a
+                                            href="#"
+                                            className="mt-4 text-green-600 font-bold text-sm hover:text-green-700 transition-all"
+                                        >
+                                            READ MORE »
+                                        </a>
+
+                                        {/* DATE */}
+                                        <div className="mt-auto pt-6 border-t border-gray-100">
+                                            <p className="text-xs text-gray-400">{item.date}</p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        {/* PAGINATION */}
+                        <div className="flex justify-center items-center gap-6 mt-10 text-sm font-semibold text-gray-500">
+                            <button className="hover:text-green-600 transition-all flex items-center gap-2">
+                                « Previous
+                            </button>
+
+                            <button className="text-green-600 font-bold hover:underline transition-all">
+                                Next »
+                            </button>
                         </div>
                     </div>
                 </section>
+
 
                 {/* MAP SECTION */}
                 <section id="map" className="pt-16 pb-20 bg-gray-50">
@@ -464,7 +524,7 @@ const Landing = () => {
                             >
                                 <iframe
                                     className="w-full h-[320px] md:h-[420px]"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d106.8!3d-6.2"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2058915340913!2d106.88906917499862!3d-6.236570261072173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3003aaa0ac1%3A0x2231579e4108f578!2sYayasan%20Riyadhussolihin!5e0!3m2!1sid!2sid!4v1770447600060!5m2!1sid!2sid"
                                     allowFullScreen=""
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
@@ -478,7 +538,12 @@ const Landing = () => {
                                 </h4>
 
                                 <p className="text-gray-600 mt-3 leading-relaxed">
-                                    📍 Jakarta Timur, DKI Jakarta <br />
+                                    <div className="flex gap-1">
+                                        <span>
+                                            📍
+                                        </span>
+                                        Jl. Cipinang Bali II No.41A, RT.7/RW.13, Cipinang Muara, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13420 <br />
+                                    </div>
                                     🕒 Jam Operasional: 08:00 - 17:00 WIB <br />
                                     📞 0819 0505 6908 <br />
                                     ✉️ yayasanriyadhussolihin@gmail.com
@@ -486,7 +551,7 @@ const Landing = () => {
 
                                 <div className="mt-6 flex flex-col sm:flex-row gap-4">
                                     <a
-                                        href="https://www.google.com/maps"
+                                        href="https://maps.app.goo.gl/eiVukssrrrJ26sPv6"
                                         target="_blank"
                                         rel="noreferrer"
                                         className="bg-green-600 hover:bg-green-700 transition-all px-6 py-3 rounded-xl text-white font-bold shadow-md text-center"
@@ -495,7 +560,7 @@ const Landing = () => {
                                     </a>
 
                                     <a
-                                        href="https://wa.me/6287846883117"
+                                        href="https://wa.me/6281905056908"
                                         target="_blank"
                                         rel="noreferrer"
                                         className="border border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-all px-6 py-3 rounded-xl font-semibold text-center"
@@ -517,11 +582,11 @@ const Landing = () => {
                             variants={fadeUp}
                             className="text-3xl font-bold text-gray-800 text-center"
                         >
-                            Video Kegiatan Kami
+                            Video Proses Pembangunan Yayasan
                         </motion.h3>
 
                         <p className="text-center text-gray-500 mt-3 max-w-2xl mx-auto">
-                            Saksikan dokumentasi kegiatan Yayasan Riyadhussolihin dalam membantu anak-anak yatim dan dhuafa.
+                            Dokumentasi proses renovasi dan pembangunan Yayasan Riyadhussolihin untuk menciptakan tempat yang lebih baik bagi anak-anak yatim dan dhuafa.
                         </p>
 
                         <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -532,7 +597,7 @@ const Landing = () => {
                             >
                                 <iframe
                                     className="w-full h-[260px] md:h-[360px]"
-                                    src="https://www.youtube.com/embed/VIDEO_ID_KAMU"
+                                    src="https://www.youtube.com/embed/ZOrN2GW2vZY"
                                     title="Video Yayasan"
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -543,12 +608,11 @@ const Landing = () => {
                             {/* TEXT */}
                             <div className="bg-green-50 rounded-3xl p-8 border border-green-100 shadow-md">
                                 <h4 className="text-2xl font-bold text-gray-800">
-                                    Bersama Kita Bisa Membantu Mereka
+                                    Proses Renovasi & Pembangunan Yayasan Riyadhussolihin
                                 </h4>
 
                                 <p className="text-gray-600 mt-4 leading-relaxed">
-                                    Kami terus berusaha memberikan pendidikan, pembinaan agama, dan bantuan sosial
-                                    untuk anak-anak yatim. Dukungan donatur adalah energi terbesar bagi kami.
+                                    Saat ini Yayasan Riyadhussolihin sedang berada dalam tahap renovasi dan pembangunan demi menyediakan tempat yang lebih layak, nyaman, dan aman bagi anak-anak yatim serta dhuafa. Kami mengajak Bapak/Ibu Donatur untuk ikut berpartisipasi dalam amal jariyah ini, agar pembangunan yayasan dapat segera selesai dan memberi manfaat lebih luas.
                                 </p>
 
                                 <div className="mt-6 flex gap-4 flex-col sm:flex-row">
@@ -557,7 +621,7 @@ const Landing = () => {
                                     </button>
 
                                     <a
-                                        href="https://youtube.com"
+                                        href="https://youtube.com/@riyadhussolihincipbali8715"
                                         target="_blank"
                                         rel="noreferrer"
                                         className="px-6 py-3 rounded-xl border border-green-600 text-green-700 font-semibold hover:bg-green-600 hover:text-white transition-all text-center"
