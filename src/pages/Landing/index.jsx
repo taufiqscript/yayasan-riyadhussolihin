@@ -70,15 +70,9 @@ const Landing = () => {
                             </button>
                         </div>
 
-                        <div className="flex gap-4">
-                            <button className={`${widthScreen < 413 ? 'hidden' : 'bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md font-semibold text-[14px] transition-all'}`}>
-                                0819 0505 6908
-                            </button>
-                            {console.log(widthScreen)}
                             <button className="bg-white text-green-600 border border-green-500 hover:bg-green-500 hover:text-white py-2 px-4 rounded-md font-semibold text-[14px] transition-all">
                                 Bayar Zakat
-                            </button>
-                        </div>
+                        </button>
                     </div>
                 )}
 
