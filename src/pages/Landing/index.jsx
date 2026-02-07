@@ -544,9 +544,18 @@ const Landing = () => {
                                         </span>
                                         Jl. Cipinang Bali II No.41A, RT.7/RW.13, Cipinang Muara, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13420 <br />
                                     </div>
-                                    🕒 Jam Operasional: 08:00 - 17:00 WIB <br />
-                                    📞 0819 0505 6908 <br />
-                                    ✉️ yayasanriyadhussolihin@gmail.com
+                                    <div className="flex gap-1">
+                                        <span>🕒</span>
+                                        Jam Operasional: 08:00 - 17:00 WIB <br />
+                                    </div>
+                                    <div className="flex gap-1">
+                                        <span>📞</span>
+                                        0819 0505 6908 <br />
+                                    </div>
+                                    <div className="flex gap-1">
+                                        <span>✉️</span>
+                                        yayasanriyadhussolihin@gmail.com <br />
+                                    </div>
                                 </p>
 
                                 <div className="mt-6 flex flex-col sm:flex-row gap-4">
@@ -685,10 +694,24 @@ const Landing = () => {
                         <div>
                             <h4 className="text-white font-bold text-lg mb-4">Kontak</h4>
                             <ul className="text-sm text-gray-400 flex flex-col gap-2">
-                                <li>📍 Jakarta Timur, DKI Jakarta</li>
-                                <li>📞 0819 0505 6908</li>
-                                <li>✉️ yayasanriyadhussolihin@gmail.com</li>
-                                <li>🕒 08:00 - 17:00 WIB</li>
+                                <div className="flex gap-1">
+                                    <span>
+                                        📍
+                                    </span>
+                                    Jl. Cipinang Bali II No.41A, RT.7/RW.13, Cipinang Muara, Kecamatan Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13420 <br />
+                                </div>
+                                <div className="flex gap-1">
+                                    <span>🕒</span>
+                                    Jam Operasional: 08:00 - 17:00 WIB <br />
+                                </div>
+                                <div className="flex gap-1">
+                                    <span>📞</span>
+                                    0819 0505 6908 <br />
+                                </div>
+                                <div className="flex gap-1">
+                                    <span>✉️</span>
+                                    yayasanriyadhussolihin@gmail.com <br />
+                                </div>
                             </ul>
                         </div>
 
@@ -712,7 +735,7 @@ const Landing = () => {
                                 </a>
 
                                 <a
-                                    href="https://wa.me/6287846883117"
+                                    href="https://wa.me/6281905056908"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-600 transition-all"
@@ -737,7 +760,7 @@ const Landing = () => {
 
             {/* FLOATING WHATSAPP */}
             <a
-                href="https://wa.me/6287846883117"
+                href="https://wa.me/6281905056908"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50"
