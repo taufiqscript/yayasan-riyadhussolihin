@@ -4,9 +4,11 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Landing from './pages/Landing/index.jsx'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
+import DetailBerita from './pages/DetailBerita'
 
 const route = createBrowserRouter([
-  { path: '/', element: <Landing /> }
+  { path: '/', element: <Landing /> },
+  { path: '/detail-berita/:title', element: <DetailBerita /> }
 ])
 
 createRoot(document.getElementById('root')).render(

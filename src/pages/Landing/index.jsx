@@ -110,7 +110,7 @@ const Landing = () => {
 
                         <div className="flex items-center gap-3">
                             <a
-                                href="https://wa.me/6287846883117"
+                                href="https://wa.me/6281905056908"
                                 target="_blank"
                                 rel="noreferrer"
                                 className="hidden md:inline-block bg-green-600 hover:bg-green-700 transition-all text-white px-5 py-2 rounded-lg font-semibold shadow-md hover:opacity-95"
@@ -478,17 +478,6 @@ const Landing = () => {
                                     </div>
                                 </motion.div>
                             ))}
-                        </div>
-
-                        {/* PAGINATION */}
-                        <div className="flex justify-center items-center gap-6 mt-10 text-sm font-semibold text-gray-500">
-                            <button className="hover:text-green-600 transition-all flex items-center gap-2">
-                                « Previous
-                            </button>
-
-                            <button className="text-green-600 font-bold hover:underline transition-all">
-                                Next »
-                            </button>
                         </div>
                     </div>
                 </section>
