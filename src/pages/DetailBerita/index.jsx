@@ -68,13 +68,13 @@ const DetailBerita = () => {
             <main className="max-w-7xl mx-auto px-6 md:px-10 pb-20 -mt-10 relative z-10">
 
                 {/* BACK BUTTON */}
-                <a
-                    href="/"
+                <div
+                    onClick="/"
                     className="inline-flex items-center gap-2 bg-white px-5 py-3 rounded-xl shadow hover:shadow-md transition-all text-gray-700 font-semibold hover:text-green-600"
                 >
                     <HiArrowNarrowLeft className="text-xl" />
                     Kembali ke beranda
-                </a>
+                </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-10">
 

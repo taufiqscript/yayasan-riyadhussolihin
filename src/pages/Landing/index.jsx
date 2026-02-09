@@ -506,12 +506,12 @@ const Landing = () => {
 
                                         <p className="text-xs text-gray-400 mt-3">{item.date}</p>
 
-                                        <a
-                                            href={`/detail-berita/${item.id}`}
+                                        <div
+                                            onClick={`/detail-berita/${item.id}`}
                                             className="mt-5 text-green-600 font-black text-sm hover:text-green-700 transition-all"
                                         >
                                             Baca Selengkapnya →
-                                        </a>
+                                        </div>
                                     </div>
                                 </motion.div>
                             ))}
