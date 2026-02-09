@@ -5,10 +5,12 @@ import { BsCalendar2Date } from "react-icons/bs"
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa"
 import { HiArrowNarrowLeft } from "react-icons/hi"
 import { MdOutlineAccountCircle } from "react-icons/md"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
 
 const DetailBerita = () => {
     const { id } = useParams()
+
+    const navigate = useNavigate()
 
     const [berita, setBerita] = useState(null)
 
@@ -69,8 +71,8 @@ const DetailBerita = () => {
 
                 {/* BACK BUTTON */}
                 <div
-                    onClick="/"
-                    className="inline-flex items-center gap-2 bg-white px-5 py-3 rounded-xl shadow hover:shadow-md transition-all text-gray-700 font-semibold hover:text-green-600"
+                    onClick={() => navigate('/')}
+                    className="inline-flex items-center gap-2 bg-white px-5 py-3 rounded-xl shadow hover:shadow-md transition-all text-gray-700 font-semibold hover:text-green-600 cursor-pointer"
                 >
                     <HiArrowNarrowLeft className="text-xl" />
                     Kembali ke beranda

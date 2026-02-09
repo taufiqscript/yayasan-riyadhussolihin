@@ -18,6 +18,7 @@ import EachUtils from "@/utils/EachUtils"
 import { LIST_CONTENT } from "@/constans/listContent"
 import { LIST_DONASI } from "@/constans/listDonasi"
 import { LIST_BERITA } from "@/constans/listBerita"
+import { useNavigate } from "react-router-dom"
 
 const fadeUp = {
     hidden: { opacity: 0, y: 24 },
@@ -33,6 +34,8 @@ const fadeStagger = {
 }
 
 const Landing = () => {
+    const navigate = useNavigate()
+
     const [scrolled, setScrolled] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [openContentIndex, setOpenContentIndex] = useState(null)
@@ -507,8 +510,8 @@ const Landing = () => {
                                         <p className="text-xs text-gray-400 mt-3">{item.date}</p>
 
                                         <div
-                                            onClick={`/detail-berita/${item.id}`}
-                                            className="mt-5 text-green-600 font-black text-sm hover:text-green-700 transition-all"
+                                            onClick={() => navigate(`/detail-berita/${item.id}`)}
+                                            className="mt-5 text-green-600 font-black text-sm hover:text-green-700 transition-all cursor-pointer"
                                         >
                                             Baca Selengkapnya →
                                         </div>
