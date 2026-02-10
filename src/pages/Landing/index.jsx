@@ -439,7 +439,7 @@ const Landing = () => {
                                                 </p>
 
                                                 <button
-                                                    onClick={() => location.replace('/donasi')}
+                                                    onClick={() => navigate('/donasi')}
                                                     className="px-5 py-2 rounded-xl bg-green-600 hover:bg-green-700 text-white text-sm font-bold transition-all shadow-md">
                                                     Donasi
                                                 </button>
