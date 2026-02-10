@@ -190,7 +190,7 @@ const DetailBerita = () => {
                                     render={(item, index) => (
                                         <a
                                             key={index}
-                                            onClick={() => location.replace(`/detail-berita/${item.id}`)}
+                                            onClick={() => navigate(`/detail-berita/${item.id}`)}
                                             className={`block p-3 rounded-xl transition-all border cursor-pointer ${item.id == berita.id
                                                 ? "bg-green-50 border-green-300 text-green-700 font-bold"
                                                 : "hover:bg-gray-50 border-gray-100"
