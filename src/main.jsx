@@ -5,10 +5,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Landing from './pages/Landing/index.jsx'
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import DetailBerita from './pages/DetailBerita'
+import Donasi from './pages/Donasi'
 
 const route = createBrowserRouter([
   { path: '/', element: <Landing /> },
-  { path: '/detail-berita/:id', element: <DetailBerita /> }
+  { path: '/detail-berita/:id', element: <DetailBerita /> },
+  { path: '/donasi', element: <Donasi /> }
 ])
 
 createRoot(document.getElementById('root')).render(

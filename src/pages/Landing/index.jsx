@@ -19,6 +19,8 @@ import { LIST_CONTENT } from "@/constans/listContent"
 import { LIST_DONASI } from "@/constans/listDonasi"
 import { LIST_BERITA } from "@/constans/listBerita"
 import { useNavigate } from "react-router-dom"
+import { useAtom } from "jotai"
+import { dataAtom } from "@/jotai/atoms"
 
 const fadeUp = {
     hidden: { opacity: 0, y: 24 },
@@ -39,6 +41,7 @@ const Landing = () => {
     const [scrolled, setScrolled] = useState(false)
     const [mobileOpen, setMobileOpen] = useState(false)
     const [openContentIndex, setOpenContentIndex] = useState(null)
+    const [data, setData] = useAtom(dataAtom)
 
     const { scrollY } = useScroll()
     const y = useTransform(scrollY, [0, 500], [0, 130])
@@ -231,29 +234,10 @@ const Landing = () => {
 
                 {/* STATS */}
                 <section className="max-w-6xl mx-auto px-6 -mt-14 relative z-20">
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                        {[
-                            { title: "105+", desc: "Anak Yatim" },
-                            { title: "10+", desc: "Pengajar" },
-                            { title: "5+", desc: "Ustadz" },
-                        ].map((item, i) => (
-                            <motion.div
-                                key={i}
-                                whileHover={{ scale: 1.05 }}
-                                className="bg-white rounded-3xl shadow-xl p-7 text-center border border-gray-100"
-                            >
-                                <h3 className="text-4xl font-black text-green-600">
-                                    {item.title}
-                                </h3>
-                                <p className="text-gray-600 font-semibold mt-2">{item.desc}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-
                     <div className="mt-10 bg-white rounded-3xl shadow-md border border-gray-100 p-7 text-center">
                         <p className="text-gray-600 leading-relaxed max-w-4xl mx-auto font-medium">
                             Yayasan Riyadhussolihin sedang membangun fasilitas panti asuhan dan
-                            ruang pembinaan untuk anak yatim piatu dhuafa. InsyaAllah setiap
+                            ruang pembinaan untuk anak yatim piatu dhuafa dan majelis taklim kaum ibu. InsyaAllah setiap
                             infaq dan sedekah menjadi amal jariyah yang terus mengalir.
                         </p>
                     </div>
@@ -423,6 +407,7 @@ const Landing = () => {
                                     <motion.div
                                         key={index}
                                         whileHover={{ y: -10 }}
+                                        onMouseEnter={() => setData(item)}
                                         className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100"
                                     >
                                         <div className="relative">
@@ -453,7 +438,9 @@ const Landing = () => {
                                                     </span>
                                                 </p>
 
-                                                <button className="px-5 py-2 rounded-xl bg-green-600 hover:bg-green-700 text-white text-sm font-bold transition-all shadow-md">
+                                                <button
+                                                    onClick={() => location.replace('/donasi')}
+                                                    className="px-5 py-2 rounded-xl bg-green-600 hover:bg-green-700 text-white text-sm font-bold transition-all shadow-md">
                                                     Donasi
                                                 </button>
                                             </div>

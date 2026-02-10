@@ -5,7 +5,7 @@ import { BsCalendar2Date } from "react-icons/bs"
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa"
 import { HiArrowNarrowLeft } from "react-icons/hi"
 import { MdOutlineAccountCircle } from "react-icons/md"
-import { useParams, Link, useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 const DetailBerita = () => {
     const { id } = useParams()
@@ -37,7 +37,7 @@ const DetailBerita = () => {
                 <img
                     src={berita.img}
                     alt={berita.title}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${id == 5 || id == 1 ? 'object-bottom' : id == 7 ? 'object-center' : 'object-top'}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-gray-50" />
 
@@ -99,21 +99,37 @@ const DetailBerita = () => {
                                     loop
                                     muted
                                     controls
-                                    className="w-full rounded-2xl shadow-lg"
+                                    className="w-full rounded-2xl shadow-lg max-h-[80vh]"
                                 >
-                                    <source src="/berita-terkini/video/santunan-anak-yatim.mp4" />
+                                    <source
+                                        src="/berita-terkini/video/santunan-anak-yatim.mp4" />
                                 </video>
                             </div>
                         ) : berita.id == 5 ? (
                             <div className="space-y-6">
-                                <img
+                                    <img
                                     src={berita.img}
                                     className="w-full max-h-[80vh] object-cover rounded-2xl shadow"
-                                />
-                                <img
-                                    src="/berita-terkini/pengajian-rutin.jpg"
-                                    className="w-full max-h-[80vh] object-cover rounded-2xl shadow"
-                                />
+                                    />
+                                    <img
+                                        src="/berita-terkini/pengajian-rutin-3.jpeg"
+                                        className="w-full max-h-[80vh] object-cover rounded-2xl shadow"
+                                    />
+                                    <img
+                                        src="/berita-terkini/pengajian-rutin.jpg"
+                                        className="w-full max-h-[80vh] object-cover rounded-2xl shadow"
+                                    />
+                                    <video
+                                        autoPlay
+                                        loop
+                                        muted
+                                        controls
+                                        className="w-full rounded-2xl shadow-lg max-h-[80vh]"
+                                    >
+                                        <source
+                                            src="/berita-terkini/video/pengajian-kaum-ibu.mp4"
+                                        />
+                                    </video>
                             </div>
                         ) : (
                             <img
@@ -123,7 +139,7 @@ const DetailBerita = () => {
                         )}
 
                         {/* DESCRIPTION */}
-                        <div className="mt-8 text-gray-700 leading-relaxed text-[15px] md:text-[16px] whitespace-pre-line text-justify">
+                        <div className="mt-8 text-gray-700 leading-relaxed text-[15px] md:text-[16px] whitespace-pre-line">
                             {berita.desc?.replace(/\\n/g, "\n")}
                         </div>
 
@@ -173,9 +189,9 @@ const DetailBerita = () => {
                                     of={LIST_BERITA}
                                     render={(item, index) => (
                                         <a
-                                            href={`/berita/${item.id}`}
                                             key={index}
-                                            className={`block p-3 rounded-xl transition-all border ${item.id == berita.id
+                                            onClick={() => location.replace(`/detail-berita/${item.id}`)}
+                                            className={`block p-3 rounded-xl transition-all border cursor-pointer ${item.id == berita.id
                                                 ? "bg-green-50 border-green-300 text-green-700 font-bold"
                                                 : "hover:bg-gray-50 border-gray-100"
                                                 }`}
